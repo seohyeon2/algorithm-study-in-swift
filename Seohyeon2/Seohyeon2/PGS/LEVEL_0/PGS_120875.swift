@@ -9,20 +9,33 @@ import Foundation
 
 func answer_PGS_평행_120875() {
     func solution(_ dots:[[Int]]) -> Int {
-        var gradient = [Double]()
-
-        for i in (0...2) {
-            for j in (i+1...3) {
-                let x = abs(dots[j][0] - dots[i][0])
-                let y = abs(dots[j][1] - dots[i][1])
-                gradient.append(Double(y) / Double(x))
-            }
-        }
+        var x1 = abs(dots[0][0] - dots[1][0])
+        var y1 = abs(dots[0][1] - dots[1][1])
+        var x2 = abs(dots[2][0] - dots[3][0])
+        var y2 = abs(dots[2][1] - dots[3][1])
         
-        if gradient.count != Set(gradient).count {
+        if Double(y1) / Double(x1) == Double(y2) / Double(x2) {
             return 1
         }
+        
+        x1 = abs(dots[0][0] - dots[2][0])
+        y1 = abs(dots[0][1] - dots[2][1])
+        x2 = abs(dots[1][0] - dots[3][0])
+        y2 = abs(dots[1][1] - dots[3][1])
+        
+        if Double(y1) / Double(x1) == Double(y2) / Double(x2) {
+            return 1
+        }
+        
+        x1 = abs(dots[0][0] - dots[3][0])
+        y1 = abs(dots[0][1] - dots[3][1])
+        x2 = abs(dots[1][0] - dots[2][0])
+        y2 = abs(dots[1][1] - dots[2][1])
 
+        if Double(y1) / Double(x1) == Double(y2) / Double(x2) {
+            return 1
+        }
+        
         return 0
     }
 }
